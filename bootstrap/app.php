@@ -8,13 +8,15 @@
 	 * @author  Soviet Ligal
 	 */
 
+	require_once __DIR__.'/../vendor/autoload.php';
+
+
 	/*
 	 * ------------------------------------------------------
-	 *  Define basepath of application
+	 *  Define base path of application
 	 * ------------------------------------------------------
 	 */
 	define('BASEPATH', __DIR__.'/../');
-
 
 	/*
 	 * ------------------------------------------------------
@@ -24,18 +26,44 @@
 	define('APPPATH',  BASEPATH . '/app');
 
 
-	require_once __DIR__.'/../vendor/autoload.php';
+	define('CONFIG_FILE_PATH',  BASEPATH . '/config');
 
 
 	/*
-	 * Instantiate the app controller class
+	 * Instantiate the Application class
 	 *
 	 */
-	$app = new \App\Controllers\AppController();
+	$app = new \App\Core\Application();
 
 
-	/*
-	 * Run the application
+	/**
+	 * Register routes
 	 *
+	 * @var TYPE_NAME $app
 	 */
-	$app->run();
+	$app->route('/', function() {
+		return "FLICKR MINI APP";
+	});
+
+
+	/**
+	 * Register routes
+	 *
+	 * @var TYPE_NAME $app
+	 */
+	$app->route('/imageGallery', function() {
+		$appController = new \App\Controllers\AppController();
+
+		return $appController->run();
+	});
+
+
+	//fetch requested url path
+	$request = $_SERVER['REQUEST_URI'];
+
+
+	//execute the route
+	$app->executeRoutes($request);
+
+
+	return $app;

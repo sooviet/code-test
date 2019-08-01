@@ -1,3 +1,6 @@
+<?php include(BASEPATH.'resources/partials/header.php') ?>
+
+
 <!-- Page Content -->
 <div class="container">
 
@@ -7,68 +10,59 @@
 
     <div class="row text-center text-lg-left">
 
-	    <div class="col-lg-3 col-md-4 col-6">
+        <form>
+            <div class="form-row align-items-center">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Search Keyword">
+                </div>
+                <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row text-center text-lg-left">
+
+	    <div class="col-lg-2 col-md-4 col-6">
 		    <a href="#" class="d-block mb-4 h-100">
 			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
 		    </a>
 	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
+	    <div class="col-lg-2 col-md-4 col-6">
 		    <a href="#" class="d-block mb-4 h-100">
 			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
 		    </a>
 	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
+	    <div class="col-lg-2 col-md-4 col-6">
 		    <a href="#" class="d-block mb-4 h-100">
 			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
 		    </a>
 	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
+	    <div class="col-lg-2 col-md-4 col-6">
 		    <a href="#" class="d-block mb-4 h-100">
 			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
 		    </a>
 	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
+	    <div class="col-lg-2 col-md-4 col-6">
 		    <a href="#" class="d-block mb-4 h-100">
 			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
 		    </a>
 	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
-		    </a>
-	    </div>
-	    <div class="col-lg-3 col-md-4 col-6">
-		    <a href="#" class="d-block mb-4 h-100">
-			    <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
-		    </a>
-	    </div>
-
     </div>
 
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
 </div>
+
+
+<?php include(BASEPATH.'resources/partials/footer.php') ?>
 

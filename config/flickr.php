@@ -2,25 +2,22 @@
 
 	return [
 
-		/*
-		 * Flickr Api Key
-		 *
-		 */
+		'flickr' => [
+			/*
+			 * Flickr Api Key
+			 *
+			 */
 
-		'api_key' => "5d05b20bc293f32da34cefadfe2bed07",
-
-
-		/*
-		 * Flickr Api URL
-		 *
-		 */
-		'api_url' => 'https://api.flickr.com/services/rest/',
+			'api_key' => "5d05b20bc293f32da34cefadfe2bed07",
 
 
-		/*
-		 * Default response format
-		 *
-		 */
-		'default_response_format' => 'json'
+
+			/*
+			 * Default Response format
+			 *
+			 */
+			'format' => 'json',
+
+		]
 
 	];
