@@ -3,7 +3,8 @@
 	/**
 	 * Main Application
 	 *
-	 * Auto Loads the base classes used in application
+	 * Auto Loads the base classes used in application.
+	 * Register Routes used in application
 	 *
 	 * @author  Soviet Ligal
 	 */
@@ -18,6 +19,7 @@
 	 */
 	define('BASEPATH', __DIR__.'/../');
 
+
 	/*
 	 * ------------------------------------------------------
 	 *  Define app path
@@ -26,6 +28,11 @@
 	define('APPPATH',  BASEPATH . '/app');
 
 
+	/*
+	 * ------------------------------------------------------
+	 *  Config folder path
+	 * ------------------------------------------------------
+	 */
 	define('CONFIG_FILE_PATH',  BASEPATH . '/config');
 
 
@@ -42,7 +49,9 @@
 	 * @var TYPE_NAME $app
 	 */
 	$app->route('/', function() {
-		return "FLICKR MINI APP";
+		$appController = new \App\Controllers\AppController();
+
+		return $appController->run();
 	});
 
 
@@ -51,7 +60,7 @@
 	 *
 	 * @var TYPE_NAME $app
 	 */
-	$app->route('/imageGallery', function() {
+	$app->route('/image-gallery', function() {
 		$appController = new \App\Controllers\AppController();
 
 		return $appController->run();

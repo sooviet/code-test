@@ -12,8 +12,6 @@
 
 		private $response;
 
-		private $config;
-
 		/**
 		 * Request constructor.
 		 *
@@ -24,8 +22,6 @@
 			$this->app = $flickr;
 
 			$this->parameters = $this->app->getConfig();
-
-			$this->config = $this->app->getConfig();
 		}
 
 
@@ -46,6 +42,17 @@
 
 
 		/**
+		 * Getter to get response as json from the sent request
+		 *
+		 * @return mixed
+		 */
+		public function getResponseJson()
+		{
+			return json_decode($this->response);
+		}
+
+
+		/**
 		 * Getter to get response from the sent request
 		 *
 		 * @return mixed
@@ -53,6 +60,21 @@
 		public function getResponse()
 		{
 			return $this->response;
+		}
+
+
+		public function isSuccessResponse()
+		{
+			switch ($this->app->getConfig()['format']) {
+				case 'json':
+					$reponse = $this->getResponseJson();
+					return  $reponse->stat === 'ok' ?  true : false;
+					break;
+
+				default:
+					return false;
+					break;
+			}
 		}
 
 

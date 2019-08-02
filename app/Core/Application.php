@@ -23,6 +23,8 @@
 		{
 			global $routes;
 
+			$path = $this->parsePath($path);
+
 			if (!array_key_exists($path, $routes)) {
 				echo '404'; return;
 			}
@@ -43,4 +45,24 @@
 
 			$routes[$path] = $callBack;
 		}
+
+
+		/**
+		 * Parses incoming url path
+		 *
+		 * @param $path
+		 * @return bool|string
+		 */
+		private function parsePath($path)
+		{
+			//checks if "?" is contained in the url path to match the route path
+			if (strpos($path, '?') !== false) {
+
+				//removes characters after "?" in the url path
+				$path = substr($path, 0, strrpos( $path, '?'));
+			}
+
+			return $path;
+		}
+
 	}

@@ -1,13 +1,16 @@
 <?php
 
-	namespace App\Library\Flickr;
+	namespace App\Library\Flickr\Photos;
 
-	class PhotosAPI extends Flickr {
+	use App\Library\Flickr\Flickr;
+
+	class SearchApi extends Flickr {
 
 		const METHOD_PHOTO_SEARCH = 'flickr.photos.search';
 
 		/**
 		 * PhotosAPI constructor.
+		 *
 		 * @param $userConfig
 		 */
 		public function __construct($userConfig)

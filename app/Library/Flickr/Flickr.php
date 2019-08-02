@@ -10,11 +10,14 @@
 
 		const API_RESPONSE_PER_PAGE = 5;
 
+		const API_NO_JSON_CALLBACK = 1;
+
 		protected $config;
 
 		protected static $defaultConfig = [
 			'format' => self::API_RESPONSE_FORMAT,
 			'per_page' => self::API_RESPONSE_PER_PAGE,
+			'nojsoncallback' => self::API_NO_JSON_CALLBACK,
 		];
 
 

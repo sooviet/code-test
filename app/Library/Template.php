@@ -29,7 +29,6 @@
 		 * @return void
 		 */
 		public function render($path, $data = []) {
-
 			foreach ($data as $index => $value) {
 				$data[$index] = $value;
 			}
