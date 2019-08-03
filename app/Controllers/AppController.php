@@ -21,49 +21,80 @@
 		}
 
 
+        /**
+         * Home Page of the app
+         *
+         */
+        public function home()
+        {
+            return $this->template->render('Home/index.php');
+        }
+
+
 		/**
 		 * Run the app
+         * Search images from flickr and display images
 		 *
 		 */
 		public function run()
 		{
-			$text = isset($_GET['text']) ? $_GET['text'] : null;
-			$page = isset($_GET['page']) ? $_GET['page'] : 1;
+			try {
+                $text = isset($_GET['text']) ? $_GET['text'] : null;
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $error = null;
 
-			if ($text === '') {
-				$error = "Please enter the text to search for photos.";
-			}
+                if (!$this->validate($page, 'numeric')) { //validate url parameter "page", checks if the value is numeric
+                    $error = "Validation Error. Page number must be numeric value.";
+                }
 
-			if ($text) {
+                if ($text === '') {
+                    $error = "Please enter the text to search for photos.";
+                }
 
-				$flickrConfig = Config::get('flickr'); //set default flickr configs
+                if ($text && !$error) {
+                    $flickrConfig = Config::get('flickr'); //set default flickr configs from config file
 
-				//set additional flickr parameters into flickrConfig object
-				$flickrConfig['extras'] = 'url_t,url_l';
-				$flickrConfig['text'] = $text ? $text : '';
-				$flickrConfig['page'] = $page;
+                    //set additional flickr parameters into flickr Config object
+                    $flickrConfig['text'] = $text ? urlencode($text) : '';
+                    $flickrConfig['page'] = $page;
 
-				//var_dump($flickrConfig); die;
+                    $flickrPhotoAPI = new SearchApi($flickrConfig); //instantiate new Flickr Photos API
 
-				$flickrPhotoAPI = new SearchApi($flickrConfig); //instantiate new Photos API
+                    $status = $flickrPhotoAPI->validateRequiredParams(); // validate required parameters before initiating flickr request
+                    if ( $status === true) {
+                        //set flickrConfigs into flickrPhotoApi
+                        $flickrPhotoAPI->setConfig($flickrConfig);
 
-				//set flickrConfigs into flickrPhotoApi
-				$flickrPhotoAPI->setConfig($flickrConfig);
+                        //instantiate new Flickr Request class for Photo Api
+                        $request = new Request($flickrPhotoAPI);
 
-				//instantiate new Flickr Request class for Photo Api
-				$request = new Request($flickrPhotoAPI);
+                        //send api request
+                        $request->send();
 
-				//send api request
-				$request->send();
+                        $imageGalleryData = [];
+                        if(!$request->isSuccessResponse()) { //checks if the response is success
+                            //if not success, throws exception
+                            throw new \Exception("Flickr Api Error. Error Occured.", 901);
+                        }
 
-				$imageGalleryData = [];
-				if($request->isSuccessResponse()) {
-					$imageGalleryData = json_decode($request->getResponse(), true);
-				}
+                        $imageGalleryData = json_decode($request->getResponse(), true);
+                    } else {
+                        // throw exception upon unsuccessful parameter validation
+                        throw new \Exception($status, 902);
+                    }
+                }
+            } catch (\Exception $e) {
+			    //catches exception thrown during method execution
+                // generate technical error report which can be used to log errors in files later
+                //for now, only exception error code & message is sent to view template
+			    $technical_error =
+                    [
+                        'code' => $e->getCode(),
+                        'message' => $e->getMessage()
+                    ];
+            }
 
-			}
-
-			$this->template->render('ImageGallery/imageGalleryList.php', compact("text", "page", "imageGalleryData", "error"));
+            return $this->template->render('ImageGallery/imageGalleryList.php', compact("text", "page", "imageGalleryData", "error", "technical_error"));
 		}
 
 	}

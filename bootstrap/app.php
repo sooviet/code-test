@@ -36,6 +36,25 @@
 	define('CONFIG_FILE_PATH',  BASEPATH . '/config');
 
 
+    $dotenv = Dotenv\Dotenv::create(BASEPATH);
+    $dotenv->load();
+
+    /*
+     * Set Error reporting for multiple environment
+     *
+     * */
+    switch (getenv("APP_ENV")) {
+        case 'local':
+        case 'staging':
+            error_reporting(E_ALL);
+            break;
+
+        case 'production':
+            error_reporting(0);
+            break;
+    }
+
+
 	/*
 	 * Instantiate the Application class
 	 *
@@ -49,9 +68,9 @@
 	 * @var TYPE_NAME $app
 	 */
 	$app->route('/', function() {
-		$appController = new \App\Controllers\AppController();
+        $appController = new \App\Controllers\AppController();
 
-		return $appController->run();
+		return $appController->home();
 	});
 
 

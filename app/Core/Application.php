@@ -2,7 +2,9 @@
 
 	namespace App\Core;
 
-	class Application
+	use App\Library\Template;
+
+    class Application
 	{
 
 		/**
@@ -25,8 +27,10 @@
 
 			$path = $this->parsePath($path);
 
+            //if path doesn't exist in routes, render 404 page
 			if (!array_key_exists($path, $routes)) {
-				echo '404'; return;
+				$template = new Template();
+				$template->render("Errors/404page.php");
 			}
 
 			echo call_user_func($routes[$path]);

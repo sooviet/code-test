@@ -8,14 +8,16 @@
 
 		const METHOD_PHOTO_SEARCH = 'flickr.photos.search';
 
+		const EXTRAS_PARAMETERS = 'url_t,url_o,url_l';
+
 		/**
 		 * PhotosAPI constructor.
 		 *
 		 * @param $userConfig
 		 */
-		public function __construct($userConfig)
+		public function __construct($config)
 		{
-			parent::__construct($userConfig);
+			parent::__construct($config);
 		}
 
 
@@ -29,6 +31,7 @@
 		public function setConfig($config)
 		{
 			$config['method'] = self::METHOD_PHOTO_SEARCH;
+			$config['extras'] = self::EXTRAS_PARAMETERS;
 
 			$this->config = array_replace_recursive(
 				self:: $defaultConfig,

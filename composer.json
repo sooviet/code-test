@@ -1,13 +1,14 @@
 {
   "name": "sooviet/flickrmini",
 
-  "description": "Flickr Mini App",
+  "description": "Flickr Mini Gallery App",
 
   "require": {
     "php": ">=7"
   },
 
   "require-dev": {
+    "vlucas/phpdotenv": "^3.4"
   },
 
   "autoload": {
@@ -16,6 +17,9 @@
     },
     "files": [
       "app/Helpers/helper.php"
+    ],
+    "classmap": [
+      "app/Helpers"
     ]
   },
 

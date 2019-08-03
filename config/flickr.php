@@ -8,8 +8,7 @@
 			 *
 			 */
 
-			'api_key' => "5d05b20bc293f32da34cefadfe2bed07",
-
+			'api_key' => getenv("FLICKR_API_KEY"),
 
 
 			/*
