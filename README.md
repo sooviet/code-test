@@ -1,27 +1,19 @@
-# code-test
-OneAffiniti code test
+# Flickr Mini Gallery App
+Flickr Mini Gallery App is a test project developed by the author only for non-commercial use.
+The app is developed in PHP 7, HTML5 and CSS3. Bootstrap 3 is used for templating purposes.
+The coding style follows PSR-2 standards.
 
-## Instructions 
+## Instructions for installing the app on local 
+1. Clone the repo
+2. There are two options to run the app which is discussed below.
 
-### Design and implement a solution to the following task, with the following requirements in mind:
+### Option 1 - Using built-in PHP server
+First, run the composer install command in terminal to install all the dependencies of the project. Now, you can run the app by typing php -S localhost:8080 -t public/ on the terminal. Visit localhost:8080/ on your browser to open the app.
 
-The solution should be clear, concise, efficient and maintainable.
+### Option 2 - Using Docker
+You need to have docker installed on your machine before proceeding with the following steps.
+1. On the root of the project, type docker build -f docker/Dockerfile <image-name>:<tag> . [tag is optional]
+2. After the image is built, you can run the docker container from that image by typing docker run -d -p 8080:80 -t <image-name>:<tag> [tag is optional]
+3. Now visit localhost:8080/ on the browser to see the app running via docker.
 
-Do not make use of any libraries that are not part of the standard language libraries.
-
-Do not make use of any pre-existing frameworks, such as CakePHP, etc.
-
-You are of course free to use whatever resources or references that are available to you, but it is expected that the design/solution will be 100% your own.
-
-Your solution should be in the form of a plain-text file or files containing the source code. Decide yourself how much time you can commit to this exercise, but please aim to return your solution to us within a week.
-
-### Task
-
-Create a Flickr image gallery, using PHP and HTML. The user should be able to enter a keyword, which is then used to search Flickr. The search results should be paginated and displayed as five results per page, and the user should be able to navigate to other pages. Each image should be displayed as a thumbnail; clicking on the thumbnail should open a new page which shows the full-size image. Keep in mind that your solution should work efficiently, no matter how many images match the keyword.
-
-Your code will be assessed on the following areas:
-- Coding style
-- Easy to run and test
-- Security concerns
-- Code maintainability
-
+##Enjoy the app
