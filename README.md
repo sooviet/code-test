@@ -12,8 +12,8 @@ First, run the composer install command in terminal to install all the dependenc
 
 ### Option 2 - Using Docker
 You need to have docker installed on your machine before proceeding with the following steps.
-1. On the root of the project, type docker build -f docker/Dockerfile <image-name>:<tag> . [tag is optional]
-2. After the image is built, you can run the docker container from that image by typing docker run -d -p 8080:80 -t <image-name>:<tag> [tag is optional]
+1. On the root of the project, type docker build -f docker/Dockerfile [image-name]:[tag] . [tag is optional]
+2. After the image is built, you can run the docker container from that image by typing docker run -d -p 8080:80 -t [image-name]:[tag] [tag is optional]
 3. Now visit localhost:8080/ on the browser to see the app running via docker.
 
 ##Enjoy the app
