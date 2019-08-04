@@ -4,6 +4,10 @@ namespace App\Library;
 
 class Config
 {
+    /*
+     * Config data
+     *
+     * */
     protected static $data;
 
     /**

@@ -1,12 +1,6 @@
 <!-- header -->
 <?php include(BASEPATH . 'resources/partials/header.php') ?>
 
-<pre>
- <?php
- //print_r($data); die;
- ?>
-</pre>
-
 <!-- Page Content -->
 <div class="container text-center">
 

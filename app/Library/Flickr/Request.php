@@ -6,11 +6,26 @@ use Exception;
 
 class Request
 {
+    /*
+     * Flickr api
+     *
+     * */
     private $app;
 
+
+    /*
+     * Parameters to be used in flickr request
+     *
+     * */
     private $parameters;
 
+
+    /*
+     * Response from flickr request
+     *
+     * */
     private $response;
+
 
     /**
      * Request constructor.
@@ -58,6 +73,11 @@ class Request
     }
 
 
+    /**
+     * Checks if the response is success
+     *
+     * @return bool
+     */
     public function isSuccessResponse()
     {
         switch ($this->app->getConfig()['format']) {
@@ -81,10 +101,9 @@ class Request
      */
     public function send()
     {
-
         $url = $this->app->getApiUrl() . '?' . $this->formattedUrlParams();
 
-        $this->response = file_get_contents($url);
+        $this->response = file_get_contents($url); //sends GET request to flickr api url
     }
 
 }
