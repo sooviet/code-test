@@ -62,27 +62,28 @@ class AppController extends Controller
                 $flickrPhotoAPI = new SearchApi($flickrConfig); //instantiate new Flickr Photos API
 
                 $status = $flickrPhotoAPI->validateRequiredParams(); // validate required parameters before initiating flickr request
-                if ($status === true) {
-                    //set flickrConfigs into flickrPhotoApi
-                    $flickrPhotoAPI->setConfig($flickrConfig);
 
-                    //instantiate new Flickr Request class for Photo Api
-                    $request = new Request($flickrPhotoAPI);
-
-                    //send api request
-                    $request->send();
-
-                    $imageGalleryData = [];
-                    if (!$request->isSuccessResponse()) { //checks if the response is success
-                        //if not success, throws exception
-                        throw new \Exception("Flickr Api Error. Error Occured.", 901);
-                    }
-
-                    $imageGalleryData = json_decode($request->getResponse(), true);
-                } else {
+                if (!$status) {
                     // throw exception upon unsuccessful parameter validation
                     throw new \Exception($status, 902);
                 }
+
+                //set flickrConfigs into flickrPhotoApi
+                $flickrPhotoAPI->setConfig($flickrConfig);
+
+                //instantiate new Flickr Request class for Photo Api
+                $request = new Request($flickrPhotoAPI);
+
+                //send api request
+                $request->send();
+
+                $imageGalleryData = [];
+                if (!$request->isSuccessResponse()) { //checks if the response is success
+                    //if not success, throws exception
+                    throw new \Exception("Flickr Api Error. Error Occured.", 901);
+                }
+
+                $imageGalleryData = json_decode($request->getResponse(), true);
             }
         } catch (\Exception $e) {
             //catches exception thrown during method execution
