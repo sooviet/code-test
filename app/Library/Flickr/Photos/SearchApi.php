@@ -7,7 +7,12 @@ use App\Library\Flickr\Flickr;
 class SearchApi extends Flickr
 {
 
+    /*
+     * Method parameter for flickr photo search api request
+     *
+     * */
     const METHOD_PHOTO_SEARCH = 'flickr.photos.search';
+
 
     /**
      * PhotosAPI constructor.

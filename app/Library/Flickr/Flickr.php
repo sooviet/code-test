@@ -5,15 +5,41 @@ namespace App\Library\Flickr;
 class Flickr
 {
 
+    /*
+     * Flickr API Base Url
+     *
+     * */
     const API_URL = "https://api.flickr.com/services/rest";
 
-    const API_RESPONSE_FORMAT = "json";
 
-    const API_RESPONSE_PER_PAGE = 5;
+    /*
+     * Flickr API Response Format
+     *
+     * */
+    const API_RESPONSE_FORMAT = "json"; //defaults to json
 
-    const API_NO_JSON_CALLBACK = 1;
 
+    /*
+     * Flickr API Response per page
+     *
+     * */
+    const API_RESPONSE_PER_PAGE = 5; //defaults to 5
+
+
+    /*
+     * Flickr API NoJsonCallback parameter
+     *
+     * */
+    const API_NO_JSON_CALLBACK = 1; // defaluts to 1
+
+
+    /*
+     * Default Config Array initialized for FLickr API
+     *
+     * @array
+     * */
     protected $config;
+
 
     /*
      * Default config parameter list to be added as url params connecting to flickr api
@@ -25,7 +51,14 @@ class Flickr
         'nojsoncallback' => self::API_NO_JSON_CALLBACK,
     ];
 
-    protected $requiredParamsList = ['api_key']; // required parameter list for connecting to FLickr API
+
+    /*
+     * Required parameters list for initiating FLickr API
+     *
+     * @array
+     * */
+    protected $requiredParamsList = ['api_key']; // required parameter list for connecting to FLickr API - api_key
+
 
     /**
      * Flickr constructor.
