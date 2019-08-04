@@ -11,11 +11,11 @@
     </div>
 
 
-        <div class="btn-group-wrap">
-            <div class="btn-group">
-                <a href="/" class="btn btn-primary">Goto Home</a>
-            </div>
+    <div class="btn-group-wrap">
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary">Goto Home</a>
         </div>
+    </div>
 </div>
 
 <!-- footer -->

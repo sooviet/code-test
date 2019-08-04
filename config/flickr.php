@@ -1,22 +1,22 @@
 <?php
 
-	return [
+return [
 
-		'flickr' => [
-			/*
-			 * Flickr Api Key
-			 *
-			 */
+    'flickr' => [
+        /*
+         * Flickr Api Key
+         *
+         */
 
-			'api_key' => getenv("FLICKR_API_KEY"),
+        'api_key' => getenv("FLICKR_API_KEY"),
 
 
-			/*
-			 * Default Response format
-			 *
-			 */
-			'format' => 'json',
+        /*
+         * Default Response format
+         *
+         */
+        'format' => 'json',
 
-		]
+    ]
 
-	];
+];
