@@ -1,27 +1,46 @@
-# code-test
-OneAffiniti code test
+# Flickr Mini Gallery App
+Flickr Mini Gallery App is a test project developed only for non-commercial use.
+The app is developed in PHP 7 and uses HTML5 and CSS3. Bootstrap 3 is used as css templating engine. 
+The project structure & setup is inspired from Laravel Framework. The coding style follows PSR-2 standards.
 
-## Instructions 
+### Libraries used
+* [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) - Dotenv library to manage environment file
+* Bootstrap 3
+## Prerequisites
+You need to obtain Flickr api key through Flickr API page first. After obtaining the key, simply copy and paste it to the .env file of the project.
 
-### Design and implement a solution to the following task, with the following requirements in mind:
+```
+FLICKR_API_KEY=your-api-key-here
+```
 
-The solution should be clear, concise, efficient and maintainable.
+## Instructions for installing the app on local machine 
+1. Clone the repo
+2. There are two options to run the app which is discussed below.
 
-Do not make use of any libraries that are not part of the standard language libraries.
+### Option 1 - Using built-in PHP server
+First, run the following command in terminal to install all the dependencies of the project. 
 
-Do not make use of any pre-existing frameworks, such as CakePHP, etc.
+```
+composer install
+```
 
-You are of course free to use whatever resources or references that are available to you, but it is expected that the design/solution will be 100% your own.
+Now, you can run the app by typing php -S localhost:8080 -t public/ on the terminal. Visit localhost:8080/ on your browser to open the app.
 
-Your solution should be in the form of a plain-text file or files containing the source code. Decide yourself how much time you can commit to this exercise, but please aim to return your solution to us within a week.
+### Option 2 - Using Docker
+You need to have docker installed on your machine before proceeding with the following steps.
+* On the root of the project, type 
+```
+docker build -f docker/Dockerfile [image-name]:[tag] . [tag is optional]
+```
 
-### Task
+* After the image is built, you can run the docker container from that image by using the command below. 
+```
+docker run -d -p 8080:80 -t [image-name]:[tag] [tag is optional]
+```
 
-Create a Flickr image gallery, using PHP and HTML. The user should be able to enter a keyword, which is then used to search Flickr. The search results should be paginated and displayed as five results per page, and the user should be able to navigate to other pages. Each image should be displayed as a thumbnail; clicking on the thumbnail should open a new page which shows the full-size image. Keep in mind that your solution should work efficiently, no matter how many images match the keyword.
+* Now visit localhost:8080/ on the browser to see the app running via docker.
 
-Your code will be assessed on the following areas:
-- Coding style
-- Easy to run and test
-- Security concerns
-- Code maintainability
+## Deployment
+You can deploy the project to staging or production either normally by hosting on Apache2 or Nginx server of your choice or if you prefer containerization then you can run the project as docker container. Additionally, you can set it up as a service in container orchestration services like docker-compose or docker swarm. 
 
+### Enjoy the app
