@@ -39,7 +39,10 @@ class AppController extends Controller
     public function run()
     {
         try {
-            $text = isset($_GET['text']) ? $_GET['text'] : null;
+            // fetch url parameter text and sanitizes the parameter
+            // FILTER_SANITIZE_STRING strip tags, optionally strip or encode special characters.
+            $text = isset($_GET['text']) ? filter_input(INPUT_GET,"text",FILTER_SANITIZE_STRING) : null;
+
             $page = isset($_GET['page']) ? $_GET['page'] : 1;
             $error = null;
 
@@ -47,7 +50,7 @@ class AppController extends Controller
                 $error = "Validation Error. Page number must be numeric value.";
             }
 
-            if ($text === '') {
+            if ($text === '') { //if the text parameter is empty then set error message
                 $error = "Please enter the text to search for photos.";
             }
 
